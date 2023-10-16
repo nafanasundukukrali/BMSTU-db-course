@@ -4,7 +4,7 @@ CREATE SCHEMA car_items;
 
 
 CREATE TABLE IF NOT EXISTS car_items.DL (
-    DLID CHAR(11) PRIMARY KEY,
+    DLID BINARY(16) DEFAULT (uuid_to_bin(uuid())) NOT NULL PRIMARY KEY,
     DateBirth DATE,
     Name VARCHAR(255),
     DateIssued DATE,
