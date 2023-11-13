@@ -5,8 +5,9 @@ import requests
 from dateutil.relativedelta import relativedelta
 from datetime import date
 import os
-
-PATH_TO_FILES = "/tmp/laba_postgr_data"
+#
+# PATH_TO_FILES = "/tmp/laba_postgr_data"
+PATH_TO_FILES = "../csvs"
 COUNT = 1000
 
 response = requests.get("https://cars-base.ru/api/cars?full=1")

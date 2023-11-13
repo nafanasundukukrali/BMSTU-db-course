@@ -298,3 +298,23 @@ where name = 'Михайличенко Даниил Максимович';
 
 select * from car_items.drivers where name = 'Михайличенко Даниил Максимович';
 
+
+
+create or replace function car_items.get_price_and_fio(car_ varchar(255))
+returns table(fio varchar(255), price int4)
+as $$
+begin
+return query (
+select d."name", i.price 
+from car_items.car c 
+join car_items.insurance i on c.vin = i.vincar 
+join car_items.insured ins on i.insuranceid = ins.idinsurance 
+join car_items.dl as d on d.dlid = ins.iddriver 
+join car_items.cr as cr on cr.iddriver = d.dlid
+where c.vin = car_);
+end
+$$
+language plpgsql;
+
+
+select * from car_items.get_price_and_fio('E5Y7K5HF2K62Y7K69');
